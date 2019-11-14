@@ -2,28 +2,28 @@
 class School
   attr_accessor :name
 
-  @@roster = {}
+  ROSTER = {}
   
   def initialize(name)
     @name = name
   end
   
   def add_student(student, grade)
-        @@roster[grade] = [] unless @@roster.has_key?(grade)
-        @@roster[grade] << student
+        ROSTER[grade] = [] unless ROSTER.has_key?(grade)
+        ROSTER[grade] << student
         
   end
   
   def roster
-    @@roster 
+    ROSTER
   end
   
   def grade(grade)
-    @@roster[grade]
+    ROSTER[grade]
   end
   
   def sort
-    sorted_roster = Hash[@@roster.sort_by{|grade, students| grade}]
+    sorted_roster = Hash[ROSTER.sort_by{|grade, students| grade}]
   end
    
 end

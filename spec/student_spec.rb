@@ -21,7 +21,7 @@ describe 'School' do
       @school.add_student("Jeff Baird", 10)
       @school.add_student("Blake Johnson", 10)
 
-      expect(@school.roster).to eq({10 => ["AC Slater", "Jeff Baird", "Blake Johnson"]})
+      expect(@school.roster).to eq({10 => ["Jeff Baird", "Blake Johnson"]})
     end
 
     it 'is able to add students to different grades' do
@@ -30,7 +30,7 @@ describe 'School' do
       @school.add_student("Avi Flombaum", 10)
       @school.add_student("Blake Johnson", 7)
 
-      expect(@school.roster).to eq({9 => ["Homer Simpson"], 10 => ["AC Slater", "Jeff Baird", "Blake Johnson", "Jeff Baird", "Avi Flombaum"], 7 => ["Blake Johnson"]})
+      expect(@school.roster).to eq({9 => ["Homer Simpson"], 10 => ["Jeff Baird", "Avi Flombaum"], 7 => ["Blake Johnson"]})
     end
   end
 
@@ -41,7 +41,7 @@ describe 'School' do
       @school.add_student("Jeff Baird", 10)
       @school.add_student("Blake Johnson", 7)
 
-      expect(@school.grade(10)).to eq(["AC Slater", "Jeff Baird", "Blake Johnson", "Jeff Baird", "Avi Flombaum", "Avi Flombaum", "Jeff Baird"])
+      expect(@school.grade(10)).to eq(["Avi Flombaum", "Jeff Baird"])
     end
   end
 
@@ -55,9 +55,9 @@ describe 'School' do
       @school.add_student("Jack Bauer", 7)
 
       # key order does not matter; this is testing that the students in each respective value are in alphabetical order
-      expect(@school.sort).to eq({10 => ["AC Slater", "Jeff Baird", "Blake Johnson", "Jeff Baird", "Avi Flombaum", "Avi Flombaum", "Jeff Baird", "Avi Flombaum", "Jeff Baird"],
-       7 => ["Blake Johnson", "Blake Johnson", "Blake Johnson", "Jack Bauer"],
-       9 => ["Homer Simpson", "Homer Simpson", "Homer Simpson", "Bart Simpson"]})
+      expect(@school.sort).to eq({10 => [ "Blake Johnson", "Jeff Baird"],
+       7 => ["Jack Bauer"],
+       9 => ["Homer Simpson"]})
     end
   end
 end
